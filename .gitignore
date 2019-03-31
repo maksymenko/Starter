@@ -1,1 +1,6 @@
 build/
+.DS_Store
+.gradle/
+.idea/
+src/main/main.iml
+src/test/test.iml

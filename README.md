@@ -1,2 +1,4 @@
-# StarterApi
-Starter API App with spring boot
+```
+$ gradle bootRun  --debug-jvm
+$ curl http://localhost:8080/ ; echo $line;
+```

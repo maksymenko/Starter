@@ -13,5 +13,5 @@ public interface BookRepository extends CrudRepository<BookModel, Long> {
     List<BookModel> findByAuthor(String author);
 
     @Query("select b from BookModel b where b.title = :title and b.author = :author")
-    List<BookModel> findByEmailReturnStream(@Param("title") String title, @Param("author") String author);
+    List<BookModel> findByTitleAndAuthor(@Param("title") String title, @Param("author") String author);
 }

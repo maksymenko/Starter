@@ -4,6 +4,7 @@ import com.sm.apistarter.apistarter.catalog.domain.BookModel;
 import com.sm.apistarter.apistarter.catalog.domain.BookRepository;
 import com.sm.apistarter.apistarter.catalog.dto.BookDto;
 import com.sm.apistarter.apistarter.catalog.dto.BooksDto;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;
@@ -23,9 +24,8 @@ public class CatalogService {
     public BooksDto getAllBooks() {
         BooksDto booksDto = new BooksDto();
 
-        List<BookModel> books = StreamSupport
-                .stream(bookRepository.findAll().spliterator(), false)
-                .collect(Collectors.toList());
+        List<BookModel> books =
+                StreamSupport.stream(bookRepository.findAll().spliterator(), false).collect(Collectors.toList());
 
         booksDto.setBooks(books.stream().map(b ->
                 new BookDto(b.getId(), b.getTitle(), b.getAuthor(), b.getPrice())).collect(Collectors.toList()));
@@ -40,5 +40,28 @@ public class CatalogService {
         bookModel.setPrice(bookDto.getPrice());
         bookModel.setCreatedAt(Date.from(Instant.now()));
         bookRepository.save(bookModel);
+    }
+
+    public BooksDto findByAuthorAndTitle(String author, String title) {
+        BooksDto booksDto = new BooksDto();
+        if (StringUtils.isNotBlank(author) && StringUtils.isNotBlank(title)) {
+            booksDto.setBooks(convertToDto(bookRepository.findByTitleAndAuthor(title, author)));
+        } else if (StringUtils.isNotBlank(author)) {
+            booksDto.setBooks(convertToDto(bookRepository.findByAuthor(author)));
+        } else if (StringUtils.isNotBlank(title)){
+            booksDto.setBooks(convertToDto(bookRepository.findByTitle(title)));
+        } else {
+            List<BookModel> books =
+                    StreamSupport.stream(bookRepository.findAll().spliterator(), false).collect(Collectors.toList());
+
+            booksDto.setBooks(convertToDto(books));
+        }
+
+        return booksDto;
+    }
+
+    private List<BookDto> convertToDto(List<BookModel> books) {
+        return books.stream().map(b ->
+                new BookDto(b.getId(), b.getTitle(), b.getAuthor(), b.getPrice())).collect(Collectors.toList());
     }
 }

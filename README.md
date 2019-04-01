@@ -18,3 +18,10 @@ mysql> create user 'dev'@'localhost' identified by 'dev';
 mysql>  GRANT ALL PRIVILEGES ON *.* To 'dev'@'localhost';
 mysql> CREATE DATABASE starter;
 ```
+
+### TODO:
+* add logger
+* add unit tests
+* add OAuth
+* add REST client
+* add UI client

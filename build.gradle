@@ -1,4 +1,4 @@
-group = 'com.sm.apistarter'
+group = 'com.sm.starter'
 version = '0.0.1-SNAPSHOT'
 
 buildscript {
@@ -17,7 +17,7 @@ apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
 
 bootJar {
-    baseName = 'gs-spring-boot'
+    baseName = 'starter-app'
     version =  '0.1.0'
 }
 
@@ -29,7 +29,8 @@ sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 dependencies {
-    compile("org.springframework.boot:spring-boot-starter-web")
-	testCompile 'org.springframework.boot:spring-boot-starter-test'
+    compile ("org.springframework.boot:spring-boot-starter-web:2.1.3.RELEASE")
+    compile("org.springframework.boot:spring-boot-starter-actuator:2.1.3.RELEASE")
+	testCompile("org.springframework.boot:spring-boot-starter-test:2.1.3.RELEASE")
     testCompile("junit:junit")
 }

@@ -1,4 +1,6 @@
-package com.sm.apistarter.apistarter.catalog;
+package com.sm.apistarter.apistarter.catalog.dto;
+
+import org.springframework.beans.factory.annotation.Required;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
@@ -8,7 +10,6 @@ public class BookDto {
     private String title;
     private String author;
     @Min(1)
-    @Max(10)
     private long price;
 
     public BookDto(long id, String title, String author, long price) {
@@ -42,14 +43,10 @@ public class BookDto {
         this.author = author;
     }
 
-    @Min(1)
-    @Max(10)
     public long getPrice() {
         return price;
     }
 
-    @Min(1)
-    @Max(10)
     public void setPrice(long price) {
         this.price = price;
     }

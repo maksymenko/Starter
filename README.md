@@ -6,7 +6,15 @@ $ gradle bootRun  --debug-jvm
 $ curl http://localhost:8080/ ; echo $line;
 ```
 
-Helper commands
+### cmd helper
 ```
+./gradlew build && java -jar build/libs/gs-spring-boot-0.1.0.jar
  kill -9 $(ps -ef | grep gradle | grep -v grep | awk '{print $2}')
+```
+
+### db helper
+```
+mysql> create user 'dev'@'localhost' identified by 'dev';
+mysql>  GRANT ALL PRIVILEGES ON *.* To 'dev'@'localhost';
+mysql> CREATE DATABASE starter;
 ```

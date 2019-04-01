@@ -1,4 +1,6 @@
-package com.sm.apistarter.apistarter.catalog;
+package com.sm.apistarter.apistarter.catalog.dto;
+
+import com.sm.apistarter.apistarter.catalog.dto.BookDto;
 
 import java.util.ArrayList;
 import java.util.List;

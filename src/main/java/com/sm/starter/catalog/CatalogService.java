@@ -7,6 +7,7 @@ import com.sm.starter.catalog.dto.BooksDto;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;
@@ -20,6 +21,7 @@ public class CatalogService {
     private final static Logger LOGGER = LoggerFactory.getLogger(CatalogService.class);
     private BookRepository bookRepository;
 
+    @Autowired
     public CatalogService(BookRepository bookRepository) {
         this.bookRepository = bookRepository;
     }
@@ -38,15 +40,17 @@ public class CatalogService {
         return booksDto;
     }
 
-    public void addBook(BookDto bookDto) {
+    public long addBook(BookDto bookDto) {
         BookModel bookModel = new BookModel();
         bookModel.setTitle(bookDto.getTitle());
         bookModel.setAuthor(bookDto.getAuthor());
         bookModel.setPrice(bookDto.getPrice());
         bookModel.setCreatedAt(Date.from(Instant.now()));
-        Long id = bookRepository.save(bookModel).getId();
+        BookModel bookSaved = bookRepository.save(bookModel);
 
-        LOGGER.debug(">> Book Added with id: {}", id);
+        LOGGER.debug(">> Book Added with id: {}", bookSaved.getId());
+
+        return bookSaved.getId();
     }
 
     public BooksDto findByAuthorAndTitle(String author, String title) {

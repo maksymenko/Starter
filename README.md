@@ -22,6 +22,7 @@ mysql> CREATE DATABASE starter;
 ### TODO:
 * add logger
 * add unit tests
+* test configuration for db
 * add OAuth
 * add REST client
 * add UI client

@@ -1,8 +1,5 @@
-package com.sm.apistarter.apistarter.catalog.dto;
+package com.sm.starter.catalog.dto;
 
-import org.springframework.beans.factory.annotation.Required;
-
-import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 
 public class BookDto {

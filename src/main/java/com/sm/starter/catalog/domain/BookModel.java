@@ -1,4 +1,4 @@
-package com.sm.apistarter.apistarter.catalog.domain;
+package com.sm.starter.catalog.domain;
 
 import java.util.Date;
 import javax.persistence.*;

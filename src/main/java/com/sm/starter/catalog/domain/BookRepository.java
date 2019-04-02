@@ -1,4 +1,4 @@
-package com.sm.apistarter.apistarter.catalog.domain;
+package com.sm.starter.catalog.domain;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;

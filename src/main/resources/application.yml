@@ -1,0 +1,11 @@
+spring:
+    jpa.hibernate.ddl-auto: update
+    datasource:
+        url: jdbc:mysql://localhost:3306/starter?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+        username: dev
+        password: dev
+
+logging:
+    level:
+        org.springframework.security: 'INFO'
+        com.sm.starter: 'DEBUG'

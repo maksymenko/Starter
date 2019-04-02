@@ -1,7 +1,7 @@
-package com.sm.apistarter.apistarter.catalog;
+package com.sm.starter.catalog;
 
-import com.sm.apistarter.apistarter.catalog.dto.BookDto;
-import com.sm.apistarter.apistarter.catalog.dto.BooksDto;
+import com.sm.starter.catalog.dto.BookDto;
+import com.sm.starter.catalog.dto.BooksDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

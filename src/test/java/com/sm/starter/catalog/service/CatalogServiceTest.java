@@ -6,6 +6,7 @@ import static org.junit.Assert.assertThat;
 import com.sm.starter.catalog.domain.BookModel;
 import com.sm.starter.catalog.domain.BookRepository;
 import com.sm.starter.catalog.dto.BookDto;
+import com.sm.starter.catalog.rest.CatalogController;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.*;
@@ -16,7 +17,7 @@ public class CatalogServiceTest {
     @Mock
     private BookRepository bookRepository;
 
-    private CatalogService catalogService;
+    private CatalogController.CatalogService catalogService;
 
     @Captor
     private ArgumentCaptor<BookModel> bookModelCaptor;
@@ -24,7 +25,7 @@ public class CatalogServiceTest {
     @Before
     public void setUp() {
         MockitoAnnotations.initMocks(this);
-        catalogService = new CatalogService(bookRepository);
+        catalogService = new CatalogController.CatalogService(bookRepository);
     }
 
     @Test

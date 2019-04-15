@@ -1,4 +1,4 @@
-package com.sm.starter.catalog;
+package com.sm.starter.catalog.service;
 
 import com.sm.starter.catalog.domain.BookModel;
 import com.sm.starter.catalog.domain.BookRepository;

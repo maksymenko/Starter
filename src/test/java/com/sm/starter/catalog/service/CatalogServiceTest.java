@@ -1,12 +1,10 @@
-package com.sm.starter.catalog;
+package com.sm.starter.catalog.service;
 
-import static org.hamcrest.Matchers.equalTo;
-import static org.junit.Assert.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import com.sm.starter.catalog.domain.BookModel;
 import com.sm.starter.catalog.domain.BookRepository;
 import com.sm.starter.catalog.dto.BookDto;
-import com.sm.starter.catalog.rest.CatalogController;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.*;
@@ -17,7 +15,7 @@ public class CatalogServiceTest {
     @Mock
     private BookRepository bookRepository;
 
-    private CatalogController.CatalogService catalogService;
+    private CatalogService catalogService;
 
     @Captor
     private ArgumentCaptor<BookModel> bookModelCaptor;
@@ -25,7 +23,7 @@ public class CatalogServiceTest {
     @Before
     public void setUp() {
         MockitoAnnotations.initMocks(this);
-        catalogService = new CatalogController.CatalogService(bookRepository);
+        catalogService = new CatalogService(bookRepository);
     }
 
     @Test
@@ -40,9 +38,9 @@ public class CatalogServiceTest {
 
         BookModel bookModelActual = bookModelCaptor.getValue();
 
-        assertThat(bookModelActual.getTitle(), equalTo(bookDto.getTitle()));
-        assertThat(bookModelActual.getAuthor(), equalTo(bookDto.getAuthor()));
-        assertThat(bookModelActual.getPrice(), equalTo(bookDto.getPrice()));
-        assertThat(id, equalTo(bookModel.getId()));
+        assertThat(bookModelActual.getTitle()).isEqualTo(bookDto.getTitle());
+        assertThat(bookModelActual.getAuthor()).isEqualTo(bookDto.getAuthor());
+        assertThat(bookModelActual.getPrice()).isEqualTo(bookDto.getPrice());
+        assertThat(id).isEqualTo(bookModel.getId());
     }
 }

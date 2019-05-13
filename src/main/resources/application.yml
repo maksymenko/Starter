@@ -5,6 +5,24 @@ spring:
         username: dev
         password: dev
 
+security:
+    oauth2:
+        client:
+            clientId: <Client ID>
+            clientSecret: <Client Secret>
+            accessTokenUri: https://www.googleapis.com/oauth2/v4/token
+            userAuthorizationUri: https://accounts.google.com/o/oauth2/v2/auth
+            tokenName: oauth_token
+            authenticationScheme: query
+            scope:
+                - openid
+                - email
+                - profile
+            clientAuthenticationScheme: form
+        resource:
+            userInfoUri: https://www.googleapis.com/oauth2/v3/userinfo
+
+
 logging:
     level:
         org.springframework.security: 'INFO'
